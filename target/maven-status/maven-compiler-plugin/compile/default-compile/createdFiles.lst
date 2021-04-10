@@ -1,0 +1,9 @@
+vn\loveBook\controller\web\HomeController.class
+vn\loveBook\controller\admin\HomeController.class
+vn\loveBook\entity\BookEntity.class
+vn\loveBook\entity\BaseEntity.class
+vn\loveBook\entity\CategoryEntity.class
+vn\loveBook\entity\RoleEntity.class
+vn\loveBook\entity\UserEntity.class
+vn\loveBook\entity\CommentEntity.class
+vn\loveBook\config\JPAConfig.class
