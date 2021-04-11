@@ -1,4 +1,4 @@
-
+<%@ page import="vn.loveBook.util.SecurityUtils" %>
 <!-- header -->
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -51,6 +51,8 @@
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#">Something else here</a>
 			</div></li>
+			
+			
 		<li class="nav-item dropdown no-arrow"><a
 			class="nav-link dropdown-toggle" href="#" id="userDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -61,9 +63,14 @@
 				<a class="dropdown-item" href="#">Settings</a> <a
 					class="dropdown-item" href="#">Activity Log</a>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#" data-toggle="modal"
+				<a class="dropdown-item" href="/dang-xuat" data-toggle="modal"
 					data-target="#logoutModal">Logout</a>
-			</div></li>
+			</div>
+			</li>
+			<li class="nav-item dropdown no-arrow">
+				<a class="nav-link dropdown-toggle"  href="#" title = "edit profile"> <%=SecurityUtils.getPrincipal().getFullName()%> </a>
+			
+			</li>
 	</ul>
 
 </nav>

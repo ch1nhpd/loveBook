@@ -37,15 +37,23 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="login__form">
+						<c:if test="${param.incorrectAccount != null}">
+							<div class="alert alert-danger" style = "text-align: center;">Username or password
+								incorrect</div>
+						</c:if>
+						<c:if test="${param.accessDenied != null}">
+							<div class="alert alert-danger" style = "text-align: center;">you Not authorize</div>
+						</c:if>
 						<h3>Login</h3>
-						<form action="#">
+						<form action="j_spring_security_check" id="formLogin"
+							method="post">
 							<div class="input__item">
-								<input type="text" placeholder="Email address" name="j_username"> <span
-									class="icon_mail"></span>
+								<input type="text" placeholder="UserName" name="j_username">
+								<span class="icon_profile"></span>
 							</div>
 							<div class="input__item">
-								<input type="password" placeholder="Password" name="j_password"> <span
-									class="icon_lock"></span>
+								<input type="password" placeholder="Password" name="j_password">
+								<span class="icon_lock"></span>
 							</div>
 							<button type="submit" class="site-btn">Login Now</button>
 						</form>

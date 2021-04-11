@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import vn.loveBook.DTO.MyUser;
+
 public class SecurityUtils {
 	
 	
@@ -19,6 +21,9 @@ public class SecurityUtils {
 		return results;
 	}
 	
-	
+	public static MyUser getPrincipal() {
+		MyUser myUser = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return myUser;
+}
 
 }

@@ -26,11 +26,34 @@ public class UserEntity extends BaseEntity{
 									inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<RoleEntity> roles = new ArrayList<>();
 	
+	
+	private String email;
+	
 	@Column(name = "username")
 	private String userName;
 	
 	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "status")
+	private int status;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
 	public List<CommentEntity> getComments() {
 		return comments;
@@ -39,6 +62,7 @@ public class UserEntity extends BaseEntity{
 	public void setComments(List<CommentEntity> comments) {
 		this.comments = comments;
 	}
+
 
 	public List<BookEntity> getBooks() {
 		return books;
