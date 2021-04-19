@@ -66,6 +66,7 @@
 						</div>
 						<div class="about-prea">${book.content }</div>
 					</div>
+					<security:authorize access="isAuthenticated()">
 					<!-- From comments -->
 					<div class="row">
 						<div class="col-lg-8">
@@ -76,19 +77,23 @@
 									<div class="col-12">
 										<div class="form-group">
 											<textarea class="form-control w-100 error" name="content"
-												id="message" cols="30" rows="9"
-												placeholder="Bình luận"></textarea>
+												id="message" cols="30" rows="9" placeholder="Bình luận"></textarea>
 										</div>
 									</div>
 
 								</div>
+								<textarea hidden name = "userId" id = "userId"><%=SecurityUtils.getPrincipal().getId()%></textarea>
+								<textarea hidden name = "commentBy" id = "commentBy"><%=SecurityUtils.getPrincipal().getFullName()%></textarea>
 								<div class="form-group mt-3">
-									<button type="submit" id = "btnComment"
+									<button type="submit" id="btnComment"
 										class="button button-contactForm boxed-btn">Send</button>
 								</div>
+								
 							</form>
 						</div>
 					</div>
+					</security:authorize>
+					
 				</div>
 				<div class="col-lg-4">
 					<!-- Section Tittle -->
@@ -125,27 +130,24 @@
 					<br>
 					<div class="single-follow mb-45">
 						<div class="single-box">
+						<c:forEach var="item" items="${listComment}">
 							<div class="follow-us d-flex align-items-center">
-								<div class="follow-count"
-									style="background-color: gray; border-radius: 10px; padding: 5px">
-									<c:forEach var="item" items="${listComment}">
+									<div class="follow-count"
+										style="background-color: gray; border-radius: 10px; padding: 5px ; margin-bottom: 10px">
 										<i class="fas fa-user-edit"><strong>${item.commentBy}</strong></i>
 										<div class="label">
 											<i class="far fa-comment-dots"></i>${item.content}
 										</div>
-									</c:forEach>
-								</div>
+									</div>
 							</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-</body>
-
-<script type="text/javascript">
+	<script>
 	$('#btnComment').click(function(e) {
 		e.preventDefault();
 		var data = {};
@@ -154,27 +156,28 @@
 			data["" + v.name + ""] = v.value;
 		});
 		data["bookId"] = ${book.id};
-		data["commentBy"] = <%=SecurityUtils.getPrincipal().getFullName()%>;
-		data["userId"] = <%=SecurityUtils.getPrincipal().getId()%>;
+		
 		addComment(data);
 	});
-	
-	function addComment(data) {
-		$.ajax({
-			url : '${commentAPI}',
-			type : 'POST',
-			contentType : 'application/json',
-			data : JSON.stringify(data),
-			dataType : 'json',
-			success : function(result) {
-				window.location.href = "#";
-			},
-			error : function(error) {
-				window.location.href = "${detailsURL}?message=system_error";
-			}
-		});
-	}
 
-</script>
+		function addComment(data) {
+			$.ajax({
+				url : '${commentAPI}',
+				type : 'POST',
+				contentType : 'application/json',
+				data : JSON.stringify(data),
+				dataType : 'json',
+				success : function(result) {
+					window.location.href = "${detailsURL}";
+				},
+				error : function(error) {
+					window.location.href = "${detailsURL}";
+				}
+			});
+		}
+	</script>
+</body>
+
+
 
 </html>

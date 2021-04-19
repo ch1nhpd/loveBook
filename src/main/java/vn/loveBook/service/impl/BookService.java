@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.loveBook.DTO.BookDTO;
+import vn.loveBook.DTO.CommentDTO;
 import vn.loveBook.converter.BookConverter;
+import vn.loveBook.converter.CommentConverter;
 import vn.loveBook.entity.BookEntity;
 import vn.loveBook.entity.CategoryEntity;
+import vn.loveBook.entity.CommentEntity;
 import vn.loveBook.repository.IBookRepository;
 import vn.loveBook.repository.ICategoryRepository;
 import vn.loveBook.service.IBookService;
@@ -107,5 +110,15 @@ public class BookService implements IBookService{
 		return listHero;
 	}
 
+	@Override
+	public List<CommentDTO> getCommentByBookId(long id) {
+		List<CommentDTO> comments = new ArrayList<CommentDTO>();
+		for (CommentEntity comment : bookRepo.findOne(id).getComments()) {
+			comments.add(CommentConverter.toDTO(comment));
+		}
+		return comments;
+	}
+
+	
 
 }

@@ -29,7 +29,7 @@ public class BookController {
 		ModelAndView mav = new ModelAndView("web/detail");
 		BookDTO bookDTO = new BookDTO();
 		bookDTO = bookService.findById(id);
-		mav.addObject("listComment", commentService.findAll());
+		mav.addObject("listComment", bookService.getCommentByBookId(id));
 		mav.addObject("book", bookDTO);
 		mav.addObject("listCategory", categoryService.findAll());
 		return mav;

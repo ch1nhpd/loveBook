@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import vn.loveBook.DTO.CommentDTO;
 import vn.loveBook.converter.CommentConverter;
 import vn.loveBook.entity.CommentEntity;
+import vn.loveBook.repository.IBookRepository;
 import vn.loveBook.repository.ICommentRepository;
+import vn.loveBook.repository.IUserRepository;
 import vn.loveBook.service.ICommentService;
 
 @Service
@@ -18,13 +20,17 @@ public class CommentService implements ICommentService{
 	@Autowired
 	private ICommentRepository commentRepo;
 	
+	@Autowired
+	private IBookRepository bookRepo;
+	
+	@Autowired IUserRepository userRepo;
+	
 	@Override
 	public boolean save(CommentDTO comment) {
-		try {
-			commentRepo.save(CommentConverter.toEntity(comment));
-		} catch (Exception e) {
-			return false;
-		}
+		CommentEntity commentEntity = CommentConverter.toEntity(comment);
+		commentEntity.setBook(bookRepo.findOne(comment.getBookId()));
+		commentEntity.setUser(userRepo.findOne(comment.getUserId()));
+		commentRepo.save(commentEntity);
 		return true;
 	}
 
