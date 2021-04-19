@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java/vn/loveBook/service/impl/UserService.java=UTF-8
+encoding//src/main/java/vn/loveBook/util/FileUtil.java=UTF-8
+encoding//src/main/java/vn/loveBook/util/MessageUtil.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/login.jsp=UTF-8

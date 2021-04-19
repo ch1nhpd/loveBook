@@ -19,6 +19,7 @@
 	<!-- Normal Breadcrumb Begin -->
 	<section class="normal-breadcrumb set-bg"
 		data-setbg="img/normal-breadcrumb.jpg">
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -32,6 +33,12 @@
 	</section>
 	<!-- Normal Breadcrumb End -->
 
+	<!-- message -->
+	<c:if test="${not empty message }">
+		<div class="alert alert-${message.alert } container " style = "text-align: center;">
+  			<strong>${message.message }</strong>
+		</div>
+	</c:if>
 	<!-- Signup Section Begin -->
 	<section class="signup spad">
 		<div class="container">
@@ -99,7 +106,7 @@
             	window.location.href = "/dang-nhap";
             },
             error: function (error) {
-            	window.location.href = "#";
+            	window.location.href = "/dang-ki?message=signup_fail";
             }
 		});
 	}

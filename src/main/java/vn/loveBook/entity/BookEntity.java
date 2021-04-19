@@ -1,6 +1,5 @@
 package vn.loveBook.entity;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -57,14 +55,10 @@ public class BookEntity extends BaseEntity {
 	private String name;
 
 	@Column(name = "avatar")
-
-	@Lob
-	private Blob avatar;
+	private String avatar;
 
 	@Column(name = "cover")
-
-	@Lob
-	private Blob cover;
+	private String cover;
 
 	@Column(name = "author")
 	private String author;
@@ -118,19 +112,19 @@ public class BookEntity extends BaseEntity {
 		this.vote = vote;
 	}
 
-	public Blob getAvatar() {
+	public String getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(Blob avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
 
-	public Blob getCover() {
+	public String getCover() {
 		return cover;
 	}
 
-	public void setCover(Blob cover) {
+	public void setCover(String cover) {
 		this.cover = cover;
 	}
 

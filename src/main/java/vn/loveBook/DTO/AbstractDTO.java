@@ -1,13 +1,23 @@
 package vn.loveBook.DTO;
 
 import java.sql.Timestamp;
+import java.util.List;
 
-public class AbstractDTO {
+public class AbstractDTO<T> {
 	private long id;
 	private Timestamp createdDate;
 	private Timestamp modifiedDate;
 	private String createdBy;
 	private String modifiedBy;
+	private List<T> listResult;
+	
+	
+	public List<T> getListResult() {
+		return listResult;
+	}
+	public void setListResult(List<T> listResult) {
+		this.listResult = listResult;
+	}
 	public long getId() {
 		return id;
 	}

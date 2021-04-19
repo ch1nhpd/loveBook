@@ -3,6 +3,7 @@ package vn.loveBook.controller.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -11,18 +12,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.loveBook.service.IBookService;
+import vn.loveBook.service.ICategoryService;
+import vn.loveBook.util.MessageUtil;
+
 @Controller(value = "controllerOfWeb")
 public class HomeController {
+	
+	@Autowired
+	private IBookService bookService;
+	
+	@Autowired 
+	private ICategoryService categoryService;
 	
 	@RequestMapping(value = "/trang-chu" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
-		return mav;
-	}
-	
-	@RequestMapping(value = "/the-loai" , method = RequestMethod.GET)
-	public ModelAndView categoryPage() {
-		ModelAndView mav = new ModelAndView("web/category");
+		mav.addObject("listTrending", bookService.getTrending());
+		mav.addObject("listHero", bookService.getHero());
+		mav.addObject("listNewBook", bookService.getNewBook());
+		mav.addObject("listRandom", bookService.getBookRandom());
+		mav.addObject("listCategory", categoryService.findAll());
 		return mav;
 	}
 	
@@ -33,8 +43,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/dang-ki" , method = RequestMethod.GET)
-	public ModelAndView signUpPage() {
+	public ModelAndView signUpPage(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("signUp");
+		if(request.getParameter("message")!=null) {
+			mav.addObject("message", MessageUtil.getMessage(request.getParameter("message")));
+		}
 		return mav;
 	}
 	
@@ -47,9 +60,4 @@ public class HomeController {
 		return new ModelAndView("redirect:/trang-chu");
 	}
 	
-	@RequestMapping(value = "/bai-viet" , method = RequestMethod.GET)
-	public ModelAndView detailPage() {
-		ModelAndView mav = new ModelAndView("web/detail");
-		return mav;
-	}
 }

@@ -15,7 +15,7 @@ public class UserAPI {
 	private IUserService userService;
 
 	@PostMapping("api/user")
-	public boolean create(@RequestBody UserDTO userDTO) {
+	public boolean create(@RequestBody UserDTO userDTO) throws Exception {
 		return userService.save(userDTO);
 	}
 }

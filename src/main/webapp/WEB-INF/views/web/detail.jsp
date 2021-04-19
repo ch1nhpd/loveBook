@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
+<%@ page import="vn.loveBook.util.SecurityUtils"%>
+<c:url var="commentAPI" value="/api/comment" />
+<c:url var="detailsURL" value="/sach?id=${book.id}" />
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -18,88 +21,36 @@
 	<section class="hero">
 		<div class="container">
 			<div class="hero__slider owl-carousel">
-				<div class="hero__items set-bg"
-					data-setbg='<c:url value ="/template/web/img/hero/hero-1.jpg"/>'>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="hero__text">
-								<div class="label">Adventure</div>
-								<h2>Fate / Stay Night: Unlimited Blade Works</h2>
-								<p>After 30 days of travel across the world...</p>
-								<a href="#"><span>Watch Now</span> <i
-									class="fa fa-angle-right"></i></a>
+				<c:forEach var="item" items="${listHero}">
+					<div class="hero__items set-bg"
+						data-setbg="<c:url value ='/template/web/img/cover/${item.cover.name}' />">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="hero__text">
+									<div class="label">Adventure</div>
+									<h2>${item.name}</h2>
+									<p>${item.author}</p>
+									<a href="sach?id=${item.id}"><span>Xem ngay</span> <i
+										class="fa fa-angle-right"></i></a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="hero__items set-bg"
-					data-setbg='<c:url value ="/template/web/img/hero/hero-2.jpg"/>'>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="hero__text">
-								<div class="label">Adventure</div>
-								<h2>Fate / Stay Night: Unlimited Blade Works</h2>
-								<p>After 30 days of travel across the world...</p>
-								<a href="#"><span>Watch Now</span> <i
-									class="fa fa-angle-right"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="hero__items set-bg"
-					data-setbg='<c:url value ="/template/web/img/hero/hero-3.jpg"/>'>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="hero__text">
-								<div class="label">Adventure</div>
-								<h2>Fate / Stay Night: Unlimited Blade Works</h2>
-								<p>After 30 days of travel across the world...</p>
-								<a href="#"><span>Watch Now</span> <i
-									class="fa fa-angle-right"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="hero__items set-bg"
-					data-setbg='<c:url value ="/template/web/img/hero/hero-4.jpg"/>'>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="hero__text">
-								<div class="label">Adventure</div>
-								<h2>Fate / Stay Night: Unlimited Blade Works</h2>
-								<p>After 30 days of travel across the world...</p>
-								<a href="#"><span>Watch Now</span> <i
-									class="fa fa-angle-right"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>
 	<!-- Hero Section End -->
 
-
-<!-- main -->
+	<!-- main -->
 	<div class="about-area">
-		<div class="container" style = "background-color: wheat;">
+		<div class="container" style="background-color: wheat;">
 			<!-- Hot Aimated News Tittle-->
 			<div class="row" style="padding: 5%">
 				<div class="col-lg-12">
 					<div class="trending-tittle">
-						<strong>Trending now</strong>
-						<!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-						<div class="trending-animated">
-							<ul id="js-news" class="js-hidden">
-								<li class="news-item">Bangladesh dolor sit amet,
-									consectetur adipisicing elit.</li>
-								<li class="news-item">Spondon IT sit amet,
-									consectetur.......</li>
-								<li class="news-item">Rem ipsum dolor sit amet, consectetur
-									adipisicing elit.</li>
-							</ul>
-						</div>
-
+						<strong>${book.name}</strong>
+						<p>${book.author}</p>
 					</div>
 				</div>
 			</div>
@@ -108,143 +59,31 @@
 					<!-- Trending Tittle -->
 					<div class="about-right mb-90">
 						<div class="about-img">
-							<img src="assets/img/trending/trending_top.jpg" alt="">
+							<img src="" alt="">
 						</div>
 						<div class="section-tittle mb-30 pt-30">
 							<h3>Here come the moms in space</h3>
 						</div>
-						<div class="about-prea">
-							<p class="about-pera1 mb-25">Moms are like…buttons? Moms are
-								like glue. Moms are like pizza crusts. Moms are the ones who
-								make sure things happen—from birth to school lunch.</p>
-							<p class="about-pera1 mb-25">Moms are like…buttons? Moms are
-								like glue. Moms are like pizza crusts. Moms are the ones who
-								make sure things happen—from birth to school lunch.</p>
-							<p class="about-pera1 mb-25">My hero when I was a kid was my
-								mom. Same for everyone I knew. Moms are untouchable. They’re
-								elegant, smart, beautiful, kind…everything we want to be. At 29
-								years old, my favorite compliment is being told that I look like
-								my mom. Seeing myself in her image, like this daughter up top,
-								makes me so proud of how far I’ve come, and so thankful for
-								where I come from. the refractor telescope uses a convex lens to
-								focus the light on the eyepiece. The reflector telescope has a
-								concave lens which means it bends in. It uses mirrors to focus
-								the image that you eventually see. Collimation is a term for how
-								well tuned the telescope is to give you a good clear image of
-								what you are looking at. You want your telescope to have good
-								collimation so you are not getting a false image of the
-								celestial body. Aperture is a fancy word for how big the lens of
-								your telescope is. But it’s an important word because the
-								aperture of the lens is the key to how powerful your telescope
-								is. Magnification has nothing to do with it, its all in the
-								aperture. Focuser is the housing that keeps the eyepiece of the
-								telescope, or what you will look through, in place. The focuser
-								has to be stable and in good repair for you to have an image you
-								can rely on. Mount and Wedge. Both of these terms refer to the
-								tripod your telescope sits on. The mount is the actual tripod
-								and the wedge is the device that lets you attach the telescope
-								to the mount. Moms are like…buttons? Moms are like glue. Moms
-								are like pizza crusts. Moms are the ones who make sure things
-								happen—from birth to school lunch.</p>
-						</div>
-						<div class="section-tittle">
-							<h3>Unordered list style?</h3>
-						</div>
-						<div class="about-prea">
-							<p class="about-pera1 mb-25">The refractor telescope uses a
-								convex lens to focus the light on the eyepiece. The reflector
-								telescope has a concave lens which means it bends in. It uses
-								mirrors to focus the image that you eventually see.</p>
-							<p class="about-pera1 mb-25">Collimation is a term for how
-								well tuned the telescope is to give you a good clear image of
-								what you are looking at. You want your telescope to have good
-								collimation so you are not getting a false image of the
-								celestial body.</p>
-							<p class="about-pera1 mb-25">My hero when I was a kid was my
-								mom. Same for everyone I knew. Moms are untouchable. They’re
-								elegant, smart, beautiful, kind…everything we want to be. At 29
-								years old, my favorite compliment is being told that I look like
-								my mom. Seeing myself in her image, like this daughter up top,
-								makes me so proud of how far I’ve come, and so thankful for
-								where I come from. the refractor telescope uses a convex lens to
-								focus the light on the eyepiece. The reflector telescope has a
-								concave lens which means it bends in. It uses mirrors to focus
-								the image that you eventually see. Collimation is a term fo Moms
-								are like…buttons? Moms are like glue. Moms are like pizza
-								crusts. Moms are the ones who make sure things happen—from birth
-								to school lunch.</p>
-							<p class="about-pera1 mb-25">Mount and Wedge. Both of these
-								terms refer to the tripod your telescope sits on. The mount is
-								the actual tripod and the wedge is the device that lets you
-								attach the telescope to the mount. Moms are like…buttons? Moms
-								are like glue. Moms are like pizza crusts. Moms are the ones who
-								make sure things happen—from birth to school lunch.</p>
-							<p class="about-pera1 mb-25">Mount and Wedge. Both of these
-								terms refer to the tripod your telescope sits on. The mount is
-								the actual tripod and the wedge is the device that lets you
-								attach the telescope to the mount. Moms are like…buttons? Moms
-								are like glue. Moms are like pizza crusts. Moms are the ones who
-								make sure things happen—from birth to school lunch.</p>
-						</div>
-						<div class="social-share pt-30">
-							<div class="section-tittle">
-								<h3 class="mr-20">Share:</h3>
-								<ul>
-									<li><a href="#"><img
-											src="assets/img/news/icon-ins.png" alt=""></a></li>
-									<li><a href="#"><img src="assets/img/news/icon-fb.png"
-											alt=""></a></li>
-									<li><a href="#"><img src="assets/img/news/icon-tw.png"
-											alt=""></a></li>
-									<li><a href="#"><img src="assets/img/news/icon-yo.png"
-											alt=""></a></li>
-								</ul>
-							</div>
-						</div>
+						<div class="about-prea">${book.content }</div>
 					</div>
-					<!-- From -->
+					<!-- From comments -->
 					<div class="row">
 						<div class="col-lg-8">
 							<form class="form-contact contact_form mb-80"
-								action="contact_process.php" method="post" id="contactForm"
+								action="contact_process.php" method="post" id="commentForm"
 								novalidate="novalidate">
 								<div class="row">
 									<div class="col-12">
 										<div class="form-group">
-											<textarea class="form-control w-100 error" name="message"
+											<textarea class="form-control w-100 error" name="content"
 												id="message" cols="30" rows="9"
-												onfocus="this.placeholder = ''"
-												onblur="this.placeholder = 'Enter Message'"
-												placeholder="Enter Message"></textarea>
+												placeholder="Bình luận"></textarea>
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<input class="form-control error" name="name" id="name"
-												type="text" onfocus="this.placeholder = ''"
-												onblur="this.placeholder = 'Enter your name'"
-												placeholder="Enter your name">
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<input class="form-control error" name="email" id="email"
-												type="email" onfocus="this.placeholder = ''"
-												onblur="this.placeholder = 'Enter email address'"
-												placeholder="Email">
-										</div>
-									</div>
-									<div class="col-12">
-										<div class="form-group">
-											<input class="form-control error" name="subject" id="subject"
-												type="text" onfocus="this.placeholder = ''"
-												onblur="this.placeholder = 'Enter Subject'"
-												placeholder="Enter Subject">
-										</div>
-									</div>
+
 								</div>
 								<div class="form-group mt-3">
-									<button type="submit"
+									<button type="submit" id = "btnComment"
 										class="button button-contactForm boxed-btn">Send</button>
 								</div>
 							</form>
@@ -254,7 +93,7 @@
 				<div class="col-lg-4">
 					<!-- Section Tittle -->
 					<div class="section-tittle mb-40">
-						<h3>Follow Us</h3>
+						<h3>Chi tiết</h3>
 					</div>
 					<!-- Flow Socail -->
 					<div class="single-follow mb-45">
@@ -265,7 +104,7 @@
 								</div>
 								<div class="follow-count">
 									<span>8,045</span>
-									<p>Fans</p>
+									<p>Views</p>
 								</div>
 							</div>
 							<div class="follow-us d-flex align-items-center">
@@ -273,33 +112,31 @@
 									<a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
 								</div>
 								<div class="follow-count">
-									<span>8,045</span>
-									<p>Fans</p>
-								</div>
-							</div>
-							<div class="follow-us d-flex align-items-center">
-								<div class="follow-social">
-									<a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
-								</div>
-								<div class="follow-count">
-									<span>8,045</span>
-									<p>Fans</p>
-								</div>
-							</div>
-							<div class="follow-us d-flex align-items-center">
-								<div class="follow-social">
-									<a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
-								</div>
-								<div class="follow-count">
-									<span>8,045</span>
-									<p>Fans</p>
+									<span>${book.publishYear }</span>
+									<p>Năm xuất bản</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- New Poster -->
-					<div class="news-poster d-none d-lg-block">
-						<img src="assets/img/news/news_card.jpg" alt="">
+					<br> <br>
+					<div class="section-tittle mb-40">
+						<h3>Bình luận</h3>
+					</div>
+					<br>
+					<div class="single-follow mb-45">
+						<div class="single-box">
+							<div class="follow-us d-flex align-items-center">
+								<div class="follow-count"
+									style="background-color: gray; border-radius: 10px; padding: 5px">
+									<c:forEach var="item" items="${listComment}">
+										<i class="fas fa-user-edit"><strong>${item.commentBy}</strong></i>
+										<div class="label">
+											<i class="far fa-comment-dots"></i>${item.content}
+										</div>
+									</c:forEach>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -307,5 +144,37 @@
 	</div>
 
 </body>
+
+<script type="text/javascript">
+	$('#btnComment').click(function(e) {
+		e.preventDefault();
+		var data = {};
+		var formData = $('#commentForm').serializeArray();
+		$.each(formData, function(i, v) {
+			data["" + v.name + ""] = v.value;
+		});
+		data["bookId"] = ${book.id};
+		data["commentBy"] = <%=SecurityUtils.getPrincipal().getFullName()%>;
+		data["userId"] = <%=SecurityUtils.getPrincipal().getId()%>;
+		addComment(data);
+	});
+	
+	function addComment(data) {
+		$.ajax({
+			url : '${commentAPI}',
+			type : 'POST',
+			contentType : 'application/json',
+			data : JSON.stringify(data),
+			dataType : 'json',
+			success : function(result) {
+				window.location.href = "#";
+			},
+			error : function(error) {
+				window.location.href = "${detailsURL}?message=system_error";
+			}
+		});
+	}
+
+</script>
 
 </html>

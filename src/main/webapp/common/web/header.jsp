@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
-<%@ page import="vn.loveBook.util.SecurityUtils" %>
+<%@ page import="vn.loveBook.util.SecurityUtils"%>
 <header class="header">
 	<div class="container">
 		<div class="row">
@@ -16,18 +16,16 @@
 				<div class="header__nav">
 					<nav class="header__menu mobile-menu">
 						<ul>
-							<li class="active"><a href="/trang-chu">Home</a></li>
-							<li><a href="./categories.html">Categories <span
+							<li class="active"><a href="/trang-chu">Trang chủ</a></li>
+							<li><a href="#">Thể loại <span
 									class="arrow_carrot-down"></span></a>
 								<ul class="dropdown">
-									<li><a href="#">Categories 1</a></li>
-									<li><a href="#">Categories 2</a></li>
-									<li><a href="/the-loai">Categories 3</a></li>
-									<li><a href="#">Categories 4</a></li>
-									<li><a href="#">Categories 5</a></li>
+									<c:forEach var="item" items="${listCategory}">
+										<li><a href="/the-loai?id=${item.id}">${item.name }</a></li>
+									</c:forEach>
 								</ul></li>
-							<li><a href="#">Our Blog</a></li>
-							<li><a href="#">Contacts</a></li>
+							<li><a href="/tat-ca-sach">Tất cả sách</a></li>
+							<li><a href="#">Đóng góp</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -36,11 +34,14 @@
 				<div class="header__right">
 					<a href="#" class="search-switch"><span class="icon_search"></span></a>
 					<security:authorize access="isAnonymous()">
-						<a href="/dang-nhap"><span class="icon_profile" title="Đăng nhập"></span></a>
+						<a href="/dang-nhap"><span class="icon_profile"
+							title="Đăng nhập"></span></a>
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
-						<a  href="#" title = "edit profile"> <%=SecurityUtils.getPrincipal().getFullName()%> </a>
-						<a href="/dang-xuat"><span class="icon_profile" title="Đăng xuất"></span></a>
+						<a href="#" title="edit profile"><%=SecurityUtils.getPrincipal().getFullName()%>
+						</a>
+						<a href="/dang-xuat"><span class="icon_profile"
+							title="Đăng xuất"></span></a>
 					</security:authorize>
 				</div>
 			</div>
