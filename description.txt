@@ -1,0 +1,19 @@
+ - Công nghệ : 
+		servlet3.1.0
+		springframework 4.3.13.RELEASE
+		springsecurity 3.2.8.RELEASE
+		jsp 2.3.1
+		jstl 1.2
+		hibernate 4.3.6.Final
+		spring.data 1.11.5.RELEASE
+		mysql 8.0.22
+ - Các chức năng trong trang web:
+	+ Phía quản trị: 
+		Xây dựng controller và api để có thể thêm, sửa, xóa thông tin: sách,
+		người dùng, nội dung bình luận.
+	+ Phía người dùng:
+		Xây dựng controller và api để hiển thị các trang đăng nhập, đăng kí,
+		danh sách theo từng thể loại, chi tiết sách và bình luận sách.
+		
+ - Demo: 
+	
